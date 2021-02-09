@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require('../db/connection');
 const Schema = mongoose.Schema;
 
 //create schema for todo
-const AppointmentSchema = new Schema({
+const appointmentSchema = new Schema({
+  id: Number,
   firstName: String,
   lastName: String,
   date: { type: Date, default: Date.now },
@@ -12,6 +13,4 @@ const AppointmentSchema = new Schema({
 })
 
 //create model for todo
-const Appointment = mongoose.model('appointment', AppointmentSchema);
-
-module.exports = Appointment;
+module.exports = mongoose.model('Appointment', appointmentSchema);
