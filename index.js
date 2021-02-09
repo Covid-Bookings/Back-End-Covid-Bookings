@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const appointmentController = require('./controllers/appointments');
-app.use('/api/appointment', appointmentController)
+app.use('/appointment', appointmentController)
 
 //MIDDLEWEAR//
 

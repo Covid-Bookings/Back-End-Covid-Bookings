@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const mongoURI =
   process.env.NODE_ENV === 'production'
     ? process.env.MONGODB_URI
-    : 'mongodb://localhost/job-board';
+    : 'mongodb://localhost/appointments';
 
 // Use Mongoose's connect method to connect to MongoDB by passing it the db URI.
 // Pass a second argument which is an object with the options for the connect
