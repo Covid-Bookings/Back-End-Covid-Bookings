@@ -1,20 +1,37 @@
+// Require necessary NPM packages
 const express = require('express');
-require('dotenv').config();
+const mongoose = require('mongoose');
+const cors = require('cors');
 
+// Instantiate express application object
 const app = express();
 
-const port = process.env.PORT || 5000;
+//MIDDLEWEAR//
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+// The `.use` method sets up middleware in Express
+// Set up cors middleware and make sure that it
+// comes before our routes are used.
+app.use(cors());
 
-app.use((req, res, next) => {
-  res.send('Welcome to Express');
-});
+// Add `express.json` middleware which will
+// parse JSON requests into JS objects before
+// they reach the route files.
+app.use(express.json());
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`)
+// The urlencoded middleware parses requests which use
+// a specific content type (such as when using Axios)
+app.use(express.urlencoded({ extended: true }));
+
+const appointmentController = require('./controllers/appointments');
+app.use('/api/appointment', appointmentController)
+
+//MIDDLEWEAR//
+
+
+// Define a port for API to run on, if the environment
+// variable called `PORT` is not found use port 4000
+app.set('port', process.env.PORT || 4000);
+// Run server on designated port
+app.listen(app.get('port'), () => {
+  console.log('listening on port ' + app.get('port'));
 });
