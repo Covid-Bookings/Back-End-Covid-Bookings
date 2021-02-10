@@ -25,6 +25,9 @@ app.use(express.urlencoded({ extended: true }));
 const appointmentController = require('./controllers/appointments');
 app.use('/appointment', appointmentController)
 
+const hospitalController = require('./controllers/hospitals');
+app.use('/hospital', hospitalController)
+
 //MIDDLEWEAR//
 
 

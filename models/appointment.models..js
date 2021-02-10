@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 //create schema for todo
 const appointmentSchema = new Schema({
-  id: Number,
   firstName: String,
   lastName: String,
   date: { type: Date, default: Date.now },
